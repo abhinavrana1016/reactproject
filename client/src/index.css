@@ -1,0 +1,70 @@
+/* antd overwrite */
+.ant-input{
+border-radius: 1.2ch;
+border: 1px solid rgb(20, 20, 22) !important;
+}
+.ant-input:focus{
+  outline: none !important;
+}
+label{
+font-size: larger !important;
+}
+.primary-button {
+background-color: rgb(139, 139, 172);
+border-radius: 0ch;
+width: 100%;
+height: 40px;
+color:black;
+font-size:larger;
+
+}
+
+/* common style */
+
+.card {
+  box-shadow: 0 0 2px gray;
+}
+.card-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.normal-text{
+  font-size: 1rem;
+}
+
+/* authentication pages */
+
+.authentication{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+}
+.register-form{
+  width: 550px;
+  height: auto;
+  background-color: bisque;
+}
+.authentication .card-title{
+  font-size: 1.5rem;
+  background-color: orange;
+  color: white !important;
+  max-width: max-content;
+  padding: 7px 15px;
+  margin-left: -80px;
+  box-shadow: 4px;
+border-bottom-left-radius: 15px;
+border-top-right-radius: 15px;
+}
+.authentication .card-title-login{
+  font-size: 1.5rem;
+  background-color: orange;
+  color: white !important;
+  max-width: max-content;
+  padding: 7px 15px;
+  box-shadow: 4px;
+border-bottom-left-radius: 15px;
+border-top-right-radius: 15px;
+  margin-left: -40px
+}
