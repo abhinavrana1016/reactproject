@@ -72,7 +72,7 @@ const login = async (req) => {
           const token = jwt.sign({ id: user._id }, process.env.JWT_SECRETKEY, {
             expiresIn: "1d",
           });
-          return success({ message: "Login successful", token: token });
+          return success({ message: "Login successful", token: token ,user});
         }
       }
     } else {
@@ -82,7 +82,21 @@ const login = async (req) => {
     return Success({ message: "Something wrong happen" });
   }
 };
+const getUserInfo = async(req)=>{
+  try {
+const userDetail = await UserModel.findById(req.body.userId,"-password")
+if(userDetail){
+  return Success({success:"true",userDetail})
+}
+else{
+  return Success({success:false,message:"User doesnot exist"})
+}
+  } catch (error) {
+    
+  }
+}
 module.exports = {
   signUp,
   login,
+  getUserInfo
 };

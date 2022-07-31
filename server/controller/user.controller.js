@@ -10,7 +10,13 @@ const login = (req, res) => {
     .then((result) => res.status(result.code).send(result.data))
     .catch((error) => res.status(500).send(error));
 };
+const getUserInfo = (req, res) => {
+  UserManager.getUserInfo(req,res)
+    .then((result) => res.status(result.code).send(result.data))
+    .catch((error) => res.status(500).send(error));
+};
 module.exports ={
   signUp,
-  login
+  login,
+  getUserInfo
 }

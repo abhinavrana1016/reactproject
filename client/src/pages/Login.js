@@ -3,20 +3,28 @@ import {Form,Input} from 'antd'
 import {Link,useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import {useSelector,useDispatch} from 'react-redux'
+import { hideLoading, showLoading } from '../redux/alertReducer'
 const Login = () => {
+  const dispatch = useDispatch()
   const Navigate = useNavigate();
   const handleSubmit = async(data)=>{
     try {
+      dispatch(showLoading())
         const response = await axios.post('/api/user/login',data)
-   if(response.data.status===400)
+   dispatch(hideLoading())
+        if(response.data.status===400)
    {
     toast.error(response.data.message)
    }
    else{
     toast.success(response.data.message)
     localStorage.setItem("token",response.data.token)
+    Navigate('/home')
    }
     } catch (error) {
+   dispatch(hideLoading())
+
         toast.error("Something went wrong")
     }
    }
