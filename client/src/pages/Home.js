@@ -1,7 +1,8 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import Layout from '../component/Layout'
 const Home = () => {
+const [userDetail,setUserDetail] = useState([])
 
     const getUserInfo = async()=>{
         try {
@@ -10,7 +11,7 @@ const Home = () => {
                     Authorization: 'Bearer '+localStorage.getItem('token')
                 }
             })
-            console.log(response.data)
+            setUserDetail(response.data.userDetail)
         } catch (error) {
             console.log(error)
             
@@ -21,7 +22,7 @@ const Home = () => {
     }, []);
   return (
     <Layout>
-       <h1>kbk</h1>
+       <h1>Welcome User {userDetail.name}</h1>
     </Layout>
   )
 }
