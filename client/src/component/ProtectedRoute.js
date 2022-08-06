@@ -21,6 +21,7 @@ const ProtectedRoute = (props) => {
      
       );
 if(response.data.success){
+  dispatch(hideLoading())
   dispatch(setUser(response.data.userDetail))
   Navigate('/home')
 
@@ -47,7 +48,7 @@ else
   } else {
     return <Navigate to="/login" />;
   }
-  return <div>ProtectedRoute</div>;
+  
 };
 
 export default ProtectedRoute;

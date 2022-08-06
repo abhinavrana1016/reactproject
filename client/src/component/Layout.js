@@ -2,35 +2,14 @@ import React ,{useState} from "react";
 import "./layout.css";
 import { Link, Navigate, useLocation ,useNavigate} from "react-router-dom";
 import {useSelector} from 'react-redux'
+import { userMenu,adminMenu } from "../constant/menu.constant";
 const Layout = ({ children }) => {
   const { user } = useSelector((state)=>state.user)
   const [collapsed,setCollapsed] = useState(false)
   const location = useLocation();
   const Navigate = useNavigate();
-  const userMenu = [
-    {
-      name: "Home",
-      path: "/home",
-      icon: "ri-home-8-line",
-    },
-    {
-      name: "Appointment",
-      path: "/appointment",
-      icon: "ri-bookmark-3-line",
-    },
-    {
-      name: "Apply Doctor",
-      path: "/apply-doctor",
-      icon: "ri-hospital-line",
-    },
-    {
-      name: "profile",
-      path: "/profile",
-      icon: "ri-profile-line",
-    },
-   
-  ];
-  const menuToRender = userMenu;
+ console.log(user)
+  const menuToRender = user?.isAdmin ? adminMenu:userMenu;
   return (
     <div className="main p-2">
       <div className="d-flex layout">
@@ -53,9 +32,16 @@ const Layout = ({ children }) => {
                 </>
               );
             })}
-             <div className={`menu-item `}>
-            <i className="ri-logout-circle-r-line" onClick={()=>{ localStorage.clear();Navigate('/login')}}> Logout</i>
-          </div>
+           
+           <div className="d-flex menu-item" onClick={()=>{
+                      localStorage.clear();
+                      window.location.reload()
+                      Navigate("/login")
+                    }}>
+                    <i className= "ri-logout-circle-r-line" />
+                    {!collapsed && <Link to='/login'>Logout</Link>}
+                   
+                  </div>
           </div>
         </div>
 

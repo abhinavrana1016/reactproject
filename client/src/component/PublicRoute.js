@@ -10,9 +10,7 @@ const PublicRoute = (props) => {
        
         return props.children
     }
-  return (
-    <div>PublicRoute</div>
-  )
+ 
 }
 
 export default PublicRoute

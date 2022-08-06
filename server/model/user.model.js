@@ -24,6 +24,22 @@ const userSchema = new Schema({
     },
     gender:{
         type:String,
+    },
+    isDoctor:{
+        type:Boolean,
+        default:false
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false,
+    },
+    watchedNotification:{
+        type:Array,
+        default:[]
+    },
+    unseenNotification:{
+        type:Array,
+        default:[],
     }
 
 },{timestamps:true})
